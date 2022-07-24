@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="event2.css">
+</head>
+<body>
+    <ul class="menu">
+        <li class="dropdown-item">
+          <span>Dropdown menu item</span>
+          <div class="dropdown-menu d-none">
+            <ul class="dropdown-list">
+              <li>Dropdown item 1</li>
+              <li>Dropdown item 2</li>
+            </ul>
+            <!-- / .dropdown-list -->
+          </div>
+          <!-- / .dropdown-menu -->
+        </li>
+        <!-- / .dropdown-item -->
+        <li class="dropdown-item">
+          <span>Dropdown menu item</span>
+          <div class="dropdown-menu d-none">
+            <ul class="dropdown-list">
+              <li>Dropdown item 1</li>
+              <li>Dropdown item 2</li>
+            </ul>
+            <!-- / .dropdown-list -->
+          </div>
+          <!-- / .dropdown-menu -->
+        </li>
+        <!-- / .dropdown-item -->
+        <li class="dropdown-item">
+          <span>Dropdown menu item</span>
+          <div class="dropdown-menu d-none">
+            <ul class="dropdown-list">
+              <li>Dropdown item 1</li>
+              <li>Dropdown item 2</li>
+            </ul>
+            <!-- / .dropdown-list -->
+          </div>
+          <!-- / .dropdown-menu -->
+        </li>
+        <!-- / .dropdown-item -->
+        <li class="dropdown-item">
+          <span>Dropdown menu item</span>
+          <div class="dropdown-menu d-none">
+            <ul class="dropdown-list">
+              <li>Dropdown item 1</li>
+              <li>Dropdown item 2</li>
+            </ul>
+            <!-- / .dropdown-list -->
+          </div>
+          <!-- / .dropdown-menu -->
+        </li>
+        <!-- / .dropdown-item -->
+        <li>
+          <span>Menu item</span>
+        </li>
+        <!-- / li -->
+        <li class="dropdown-item">
+          <span>Dropdown menu item 2</span>
+          <div class="dropdown-menu d-none">
+            <ul class="dropdown-list">
+              <li>Second Dropdown item 1</li>
+              <li>Second Dropdown item 2</li>
+            </ul>
+            <!-- / .dropdown-list -->
+          </div>
+          <!-- / .dropdown-menu -->
+        </li>
+        <!-- / .dropdown-item -->
+      </ul>
+</body>
+<script>
+    const dropItem = document.querySelectorAll(".dropdown-item")
+    
+
+    function isDrop(el) {
+      const currentDropMenu = el.querySelector(".dropdown-menu")
+      const dropMenuAll = document.querySelectorAll(".dropdown-menu")
+      const isToggle = currentDropMenu.classList.toggle("d-none")
+      if(!isToggle){
+        [...dropMenuAll].filter(e => e!=currentDropMenu).forEach(e => e.classList.add("d-none"))
+      }
+    }
+
+    dropItem.forEach((el)=>{
+        el.addEventListener("click",() => isDrop(el))
+    })
+   
+   
+
+</script>
+</html>

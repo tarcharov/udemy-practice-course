@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn-msg" data-text="Custom message">Show message</button>
+  <button id="btn-generate">Generate item</button>
+  <p><strong id="tag">Tag:</strong></p>
+  <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+  </ul>
+</body>
+<script>
+  const btn = document.querySelector('#btn-msg')
+btn.addEventListener("click",() => {alert(btn.dataset.text)})
+  // btn.onclick = function (){alert(btn.dataset.text)}
+btn.addEventListener("mouseover",() => btn.style.backgroundColor = 'red')
+btn.addEventListener("mouseout",() => btn.style.backgroundColor = 'white')
+const tagP = document.querySelector("#tag")
+document.body.addEventListener("click", (e) => tagP.textContent = `Tag:${e.target.tagName}`)
+
+// const btn = document.querySelector('#btn-generate')
+// const ul = document.querySelector('ul')
+
+// btn.addEventListener("click", () => {
+//   const li = document.createElement('li')
+//   li.textContent = `Item ${ul.children.length+1}`
+//   ul.appendChild(li)
+// })
+</script>
+</html>

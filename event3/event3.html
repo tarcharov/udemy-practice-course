@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      display: flex;
+    }
+ 
+    .box {
+      width: 80%;
+      height: 80%;
+      border: 1px solid black;
+      display: flex;
+      margin: auto;
+      background-color: #fff;
+      transition: all 0.2s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <div class="box">
+        <div class="box">
+          <div class="box">
+            <div class="box">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>  
+    const colors = ['red', 'blue', 'olive', 'orange', 'pink', 'yellow', 'green', 'gray', 'aqua', 'brown'];
+    const boxes = document.querySelectorAll('.box')
+
+    function setColorChildren(children,color,ms){
+        [...children].forEach((child) => setTimeout(function(){
+            child.style.backgroundColor = color
+            ms+= ms
+            if(child.children.length) setColorChildren(child.children,color,ms)
+        }, ms))
+    }
+
+    boxes.forEach(box => box.addEventListener('mouseover', (e) => {
+        e.stopPropagation()
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        setColorChildren(box.children,color,200);
+    }))
+
+    boxes.forEach(box => box.addEventListener('mouseout', (e) => {
+        setColorChildren(box.children,'white',0)
+    }))
+
+</script>
+</html>
