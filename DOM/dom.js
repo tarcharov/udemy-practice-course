@@ -48,30 +48,39 @@ const users = [
         balance: "Balance"
     }
     const container = document.querySelector('.container')
+    const thead = document.createElement('thead')
     const table = document.createElement('table')
-
-    users.forEach(user => {
-        table.appendChild(trTemplate(tableShema, user))
+    let totalBalance = 0
+    thead.appendChild(trTemplate(tableShema, tableShema,))
+    table.appendChild(thead)
+    users.forEach((user,index) => {
+        table.appendChild(trTemplate(tableShema, user,index))
+        totalBalance += user.balance
     });
-    
+    table.appendChild(totalBalanceTr(totalBalance))
     container.appendChild(table)
 
-    function trTemplate(tableShema,user){
+    function trTemplate(tableShema,user,index){
+        index++
         const tr = document.createElement('tr')
-        
         Object.keys(tableShema).forEach(arg => {
             const td = document.createElement('td')
-            td.textContent = user[arg]
-            console.log(user)
+            td.textContent = user[arg] ? user[arg] : index
             tr.appendChild(td)
         })
         return tr
     }
 
-    function theadTemplate(){
-        const thead = document.querySelector('thead')
-        thead
-        return tr
-    }
+    function totalBalanceTr(balance){
+      const tr = document.createElement('tr')
+      const td = document.createElement('td')
+      const columnCounts = Object.keys(tableShema).length;
+      td.setAttribute('colspan', columnCounts);
+      td.insertAdjacentHTML('beforeend', `Total balance: <b>${balance}</b>`);
+      td.setAttribute('align','right')
+      td.classList.add("balance-td")
 
+      tr.appendChild(td)
+      return tr
+  }
 })(users)

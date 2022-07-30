@@ -6,9 +6,11 @@ table{
     width: 100%;
     border-spacing: 0px;
 }
-tr{
-    border-bottom: 3px solid gray;
-}
+
 td{
     border-bottom: 3px solid gray;
+}
+
+.balance-td{
+    border: 0;
 }
